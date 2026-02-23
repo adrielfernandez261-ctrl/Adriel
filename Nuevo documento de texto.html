@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adriel Fern&aacute;ndez Garc&iacute;a | Joyer&iacute;a & Ventas Online - Barcelona</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #28a745;
+      --gray: #6c757d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), #1a252f);
+      color: white;
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      background: rgba(255,255,255,0.15);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+
+    .btn:hover {
+      background: #2980b9;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+
+    section {
+      padding: 60px 0;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+
+    .profile-text {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .experience {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .job {
+      background: #f8f9fa;
+      border-left: 4px solid var(--secondary);
+      padding: 20px 0 20px 25px;
+      margin-bottom: 30px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .job-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .job-period {
+      color: var(--gray);
+      font-weight: 600;
+    }
+
+    .job-company {
+      font-style: italic;
+      color: var(--secondary);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .skill-tag {
+      background: var(--light);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .info-icon {
+      font-size: 1.4rem;
+      color: var(--secondary);
+      min-width: 28px;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #adb5bd;
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--secondary);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: var(--success);
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #218838;
+    }
+
+    .privacy-note {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .subtitle { font-size: 1.1rem; }
+      .btn { padding: 12px 24px; }
+      .job-header { flex-direction: column; gap: 5px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Adriel Fern&aacute;ndez Garc&iacute;a</h1>
+    <p class="subtitle">Operario de joyer&iacute;a especializado en soldadura, reparaci&oacute;n y dise&ntilde;o 3D &mdash; Vendedor online y gestor de tiendas digitales</p>
+    <div class="location">
+      <i class="fas fa-map-marker-alt"></i>
+      Sant Boi de Llobregat, Barcelona, Espa&ntilde;a
+    </div>
+    <a href="#" class="btn" id="hireBtn">Contratar</a>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Sobre m&iacute;</h2>
+    <p class="profile-text">
+      Profesional responsable y puntual, con experiencia comprobada en joyer&iacute;a (soldadura, reparaci&oacute;n y dise&ntilde;o 3D) y en ventas online. 
+      Buen manejo de herramientas manuales e inform&aacute;ticas, aprendizaje r&aacute;pido y alta capacidad de adaptaci&oacute;n. 
+      Disponible de inmediato para incorporarse en joyer&iacute;a, comercio, almac&eacute;n o log&iacute;stica.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Experiencia</h2>
+    <div class="experience">
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Operario de joyer&iacute;a y dise&ntilde;o 3D</span>
+          <span class="job-period">2018 &ndash; 2023</span>
+        </div>
+        <div class="job-company">Romo Joyer&iacute;a &mdash; Col&oacute;n, Matanzas, Cuba</div>
+        <p>Soldadura y reparaci&oacute;n de piezas de joyer&iacute;a. Dise&ntilde;o 3D de anillos y dijes para fundici&oacute;n. Trabajo de precisi&oacute;n y acabado en taller. Apoyo puntual en atenci&oacute;n al cliente.</p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Vendedor y gestor de tienda online</span>
+          <span class="job-period">2023</span>
+        </div>
+        <div class="job-company">Portal de ventas online &mdash; Cuba</div>
+        <p>Venta de mercanc&iacute;a industrial importada. Creaci&oacute;n de anuncios, fotos y descripciones. Atenci&oacute;n al cliente y coordinaci&oacute;n de entregas. Gesti&oacute;n b&aacute;sica de marketing digital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Habilidades</h2>
+    <div class="skills">
+      <span class="skill-tag"><i class="fas fa-hand-paper"></i> Trabajo manual y precisi&oacute;n</span>
+      <span class="skill-tag"><i class="fas fa-shopping-cart"></i> Ventas y atenci&oacute;n al cliente</span>
+      <span class="skill-tag"><i class="fas fa-laptop-code"></i> Inform&aacute;tica y redes sociales</span>
+      <span class="skill-tag"><i class="fas fa-users"></i> Trabajo en equipo</span>
+      <span class="skill-tag"><i class="fas fa-sync-alt"></i> Aprendizaje r&aacute;pido</span>
+      <span class="skill-tag"><i class="fas fa-bolt"></i> Alta adaptabilidad</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Contacto</h2>
+    <div class="contact-info">
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-phone"></i></div>
+        <div>
+          <strong>Tel&eacute;fono:</strong><br>
+          <a href="tel:+34624979173" style="color: var(--secondary);">+34 624 97 91 73</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <strong>Email:</strong><br>
+          <a href="mailto:adrielfernandez261@gmail.com" style="color: var(--secondary);">adrielfernandez261@gmail.com</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <strong>Ubicaci&oacute;n:</strong><br>
+          Sant Boi de Llobregat, Barcelona, Espa&ntilde;a<br>
+          <small>Disponible: inmediata, horarios rotativos y fines de semana</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Adriel Fern&aacute;ndez Garc&iacute;a. Todos los derechos reservados.</p>
+  <p style="margin-top: 10px;">
+    Esta p&aacute;gina cumple con el RGPD de la UE. Tus datos ser&aacute;n tratados con confidencialidad.
+  </p>
+</footer>
+
+<!-- Modal -->
+<div id="hireModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>&iexcl;Interesado en contratarme?</h3>
+    <p>Por favor, completa el formulario y me pondr&eacute; en contacto contigo lo antes posible.</p>
+
+    <form id="hireForm" action="https://formspree.io/f/mdalpzea" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre completo *</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Tel&eacute;fono (con c&oacute;digo +34) *</label>
+        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" placeholder="Ej: 612345678" required>
+      </div>
+      <div class="form-group">
+        <label for="direccion">Direcci&oacute;n en Barcelona *</label>
+        <input type="text" id="direccion" name="direccion" placeholder="Calle, n&uacute;mero, c&oacute;digo postal" required>
+      </div>
+      <div class="form-group">
+        <label for="mensaje">De qu&eacute; se trata el trabajo *</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Describe brevemente el trabajo que necesitas" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Enviar solicitud</button>
+      <p class="privacy-note">
+        Al enviar, aceptas nuestra <a href="#" style="color:var(--secondary);">pol&iacute;tica de privacidad</a>. Tus datos no se compartir&aacute;n con terceros.
+      </p>
+      
+      <!-- Campos de Formspree -->
+      <input type="hidden" name="_next" value="https://adriel-fernandez.com/gracias">
+      <input type="hidden" name="_subject" value="Nueva solicitud de trabajo">
+      <input type="hidden" name="_autoresponse" value="¡Gracias por tu interés! Te contactaré en las próximas 24h.">
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hireBtn = document.getElementById('hireBtn');
+    const modal = document.getElementById('hireModal');
+    const closeBtn = document.querySelector('.close');
+    const hireForm = document.getElementById('hireForm');
+
+    if (hireBtn) {
+      hireBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+    }
+
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    if (hireForm) {
+      hireForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Verificar si todos los campos obligatorios están llenos
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefono = document.getElementById('telefono').value.trim();
+        const direccion = document.getElementById('direccion').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
+        
+        if (nombre && email && telefono && direccion && mensaje) {
+          // Enviar formulario
+          alert('¡Gracias por tu inter&eacute;s! Tu solicitud ha sido enviada.\n\nEn las pr&oacute;ximas 24h recibir&aacute;s un correo de confirmaci&oacute;n.');
+          
+          modal.style.display = 'none';
+          hireForm.reset();
+        } else {
+          alert('Por favor, completa todos los campos obligatorios (marcados con *)');
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
